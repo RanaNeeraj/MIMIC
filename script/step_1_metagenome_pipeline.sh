@@ -56,7 +56,7 @@ r2=$i."rmhost.pair.2.fq.gz"
 	#spades.py -1 $input/$r1 -2 $input/$r2 --meta -o $i.spade 
 	$metaspade -1 $path_to_processed_file/$i.1.fastq_QC.fastq.gz -2 $path_to_processed_file/$i.2.fastq_QC.fastq.gz --meta -o $path_to_processed_file/$i.spade
 	echo "$i	assembly finished" >> $path_to_processed_file/ASMlogfile.txt
-	ContigCountAssembly=$(grep -c "^" $path_to_processed_file/$i.spade/contigs.fasta) # --------> counting contings
+	ContigCountAssembly=$(grep -c "^>" $path_to_processed_file/$i.spade/contigs.fasta) # --------> counting contings
 	#rm $input/$r1
 	#rm $input/$r2
 #seqkit --> contig length cutoff
@@ -65,13 +65,13 @@ r2=$i."rmhost.pair.2.fq.gz"
 	echo "$i	prodigal statred">>$path_to_processed_file/Prodigallogfile.txt
 
 
-	ContigCountSeqKit_500=$(grep -c "^" $path_to_processed_file/'$i'.seqkit_contig.fasta) # ----> contigCount after cutoff
+	ContigCountSeqKit_500=$(grep -c "^>" $path_to_processed_file/'$i'.seqkit_contig.fasta) # ----> contigCount after cutoff
 
 #prodigal --> gene prediction
 
 	$ProdigalPath -i $path_to_processed_file/$i.seqkit_contig.fasta -p meta -a $path_to_processed_file/$i.seqkit_contigs_prod.faa -c -m -q -f sco -d $path_to_processed_file/$i.fna	
 	echo "$i	prodigal finished">>$path_to_processed_file/Prodigallogfile.txt
-	ProteinCount=$(grep -c "^" $path_to_processed_file/'$i'.seqkit_contigs_prod.faa) #-------------- Counting proteins
+	ProteinCount=$(grep -c "^>" $path_to_processed_file/'$i'.seqkit_contigs_prod.faa) #-------------- Counting proteins
 	
 	echo -e "'$i'\t$ContigCountAssembly\t$ContigCountSeqKit_500\t$ProteinCount" >> $path_to_processed_file/Contig_protein_Count.txt 
 	echo "$i	hmmscan started">>$path_to_processed_file/hmmscan_logfile.txt
