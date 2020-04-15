@@ -100,7 +100,7 @@ install.packages(c("tidyverse","plyr","data.table","ggplot2","inflection","taRif
 #To plot metagenome coverage  
   #ggplot(df_W,aes(Index,Percentage,group=MetaGenome,color=MetaGenome))+geom_point()+geom_line()
   
-  	df_W <- df_W %>% dplyr::group_by(MetaGenome) %>%  dplyr::mutate(kneepoint=FindKnee_uik(x=Index,y=Score))
+  	df_W <- df_W %>% dplyr::group_by(MetaGenome) %>%  dplyr::mutate(kneepoint=FindKnee_uik(x=Index,y=Percentage))
   
 #to plot knee point
     	ggplot(df_W,aes(Index,Percentage,group=MetaGenome,color=MetaGenome))+
