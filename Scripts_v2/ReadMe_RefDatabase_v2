@@ -1,0 +1,21 @@
+Reference data sets
+
+MiMiC_reference_Database.tar.gz
+
+this repository contains three folder inside
+
+1.hostspecific
+This folder has three host specific species pfam binary vector 
+  human 
+  mice
+  pig
+
+2.metagenomeUsedInStudy
+  metagenomeVector_937.txt : pfam vecor of metagenomes used in the MiMiC paper study
+  all_meta_937.txt : meta data information with sample name and the source of the metagenome
+
+3.mockCommunity : Pfam vector of the mock community metagenome 
+
+4.ncbi_refseq : Pfam vector of the ncbi refseq genomes used in the MiMiC study
+
+
