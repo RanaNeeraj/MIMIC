@@ -1,0 +1,69 @@
+if contig assembly is already available then user need to use the following script.
+
+1. step_1_contig_to_Pfam_v2.sh
+
+Usage:
+bash step_1_contig_to_Pfam.sh -i PathToInputFolder -d PathToPfamDatabase -t optionforProdigal(meta or single) 
+
+options:
+-i path to input folder where contigs/assemblies are kept 
+-d path to hmmpressed pfam database
+-t if metagenomic assmbly then meta otherwise single
+
+
+# this script generated 3 folder
+output_faa : all faa files are generaed in this folder 
+output_pfam : all hmmscan output files are generated in this folder 
+output_fna : all fna (prodigal) files are generated in this folder 
+
+*************************************************************************************************************
+
+2. step_2_hmmscan_parsed_v2.pl
+script parsed the hmmscan out put for step 3 
+
+Usage:
+
+# perl step_2_hmmscan_Parsed_v2.pl path_to_input_folder*
+# the input folder should contain only faa files inside.
+
+****************************************************************************************************************
+
+3. step_3_pfam_vector_script_v2.R
+
+ this script makes a binary vector for genome/metagenome profile of Pfams.
+It required the Pfam.A.clans file from Pfam data base
+(ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/). Different version of Pfam vary in numbers. 
+This script generates an output.
+PfamVector.txt file is used as an input for the next step.
+
+Usage:
+
+Rscript --vanilla script_2_pfam_vector.R -i pfam.A.clans -p pathForParsedFile -o outputfile*
+
+-i Pfam.A.clans file from pfam database 
+-p path for input folder where all pfam parsed files are available
+-o name of output file name (default is PfamVector.txt)
+
+********************************************************************************************************************
+
+4. step_4_mimic_v2.R
+
+Description
+
+This script is used to calculate the minimal microbial consrotia for a metagenome based on the reference pfam vector of microbial species
+#minimum number of species covering maximum number of metagenome
+
+Usage:
+
+Rscript --vanilla step_4_mimic.txt -m metagenomefileName -g genomeVectorFileName -i iterationNumber -o mimicOutputName -k kneepointbasedOutputName
+
+#this provide the description of the option to be used
+Rscript --vanilla step_4_mimic.txt -h 
+
+-m input metagenome Pfam vector
+-g input reference genome Pfam vector
+-i iteration number to be ran for each metagenome
+-o mimic outputfile name (optional: default MiMiC.txt)
+-k mimic output file name with knee point (optional : MiMiC_KneePoin.txt)
+**************************************************************************************************************************************************
+ 
