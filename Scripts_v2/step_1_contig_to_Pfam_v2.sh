@@ -1,6 +1,6 @@
 #Metagenome pipeline.
 #Neeraj Kumar
-#last update 20 March 2020
+#last update Feb 2021
 #use : bash metagenome_pipeline.sh
 #
 #*********************************************#
