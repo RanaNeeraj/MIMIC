@@ -1,3 +1,14 @@
+#Author Neeraj Kumar
+#Last updated 2021
+
+#Description
+# script parsed the hmmscan out put for step 3 
+
+#Usage
+# perl step_2_hmmscan_Parsed_v2.pl path_to_input_folder*
+# the input folder should contain only faa files inside.
+
+
 #!usr/bin/perl 
 use strict;
 use warnings;
