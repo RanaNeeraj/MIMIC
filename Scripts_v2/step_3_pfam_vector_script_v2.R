@@ -13,8 +13,9 @@
   getwd()
 
 # Usage -------------------------------------------------------------------
-# Rscript --vanilla script_2_pfam_vector.R -i pfam.A.clans -p pathForParsedFile
-# Rscript --vanilla script_2_pfam_vector.R Pfam.A.clans Path_to_parsed_files # on terminal
+
+# Rscript --vanilla script_2_pfam_vector.R -i pfam.A.clans -p pathForParsedFile -o outputfile
+
 
 # install required package ------------------------------------------------
 
